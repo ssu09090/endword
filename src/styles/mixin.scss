@@ -1,0 +1,30 @@
+//사용할 땐 @include flex-center;
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// 함수 믹스인 사용 법 @include flex-layout(column, space-around);
+
+@mixin flex-layout($direction:row, $justify:center, $align:center){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin round-button($bgc:#ffe34f, $color:#32353f){
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 0.7rem;
+  background-color: $bgc;
+  color: $color;
+  font-weight: bolder;
+  cursor: pointer;
+  border-radius: 2rem;
+  transition: all 0.3s ease;
+  &:hover{
+    filter: brightness(0.8)
+  }
+}

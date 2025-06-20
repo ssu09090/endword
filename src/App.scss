@@ -1,0 +1,118 @@
+@font-face {
+  font-family: "CookieRun-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+// other scss
+@import "./styles/variable.scss"; // variable
+@import "./styles/mixin.scss"; // mixin
+@import "./styles/reset.scss"; // 리셋 reset
+
+
+/*
+하고 싶은거
+인풋 안에 시작 단어를 입력하세요 넣기
+단어 입력에 커서 놓으면 말 없어지게하기
+로딩중일때 말풍선에 ... 생기기
+"심심이가 단어를 찾지 못했습니다. 직접 입력해주세요" 창 뜨면 게임 종료 또는 새로고침
+
+*/
+
+
+// 기본 배경 바디
+body {
+  font-family: "CookieRun-Regular";
+}
+#root {
+  height: 100vh;
+  background: #eeeeee;
+  @include flex-center;
+}
+.app {
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+  color: var(--font-color);
+  @media screen and (min-width: 768px) {
+    width: 400px;
+    height: 850px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 3rem;
+  }
+}
+
+//시작화면
+.start-screen {
+  @include flex-layout(column, space-around);
+  height: 100%;
+  text-align: center;
+  gap: 3rem;
+  h1 {
+    font-size: 3rem;
+  }
+  .input-form {
+    @include flex-layout(column);
+    gap: 2rem;
+    button {
+      @include round-button();
+      font-size: 1.5rem;
+    }
+    input {
+      display: block;
+      width: 100%;
+      font-size: 1.5rem;
+      padding: 0.7rem;
+    }
+  }
+}
+
+// Game Screen 게임 화면
+.game-screen {
+  @include flex-layout(column);
+  height: 100%;
+  padding: 2rem;
+  gap: 0.7rem;
+  .word-list {
+    overflow: auto;
+    padding: 1rem;
+    flex: 1;
+    width: 100%;
+    li {
+      @include flex-center;
+      justify-content: flex-start;
+      margin: 0.3rem 0;
+      gap: 0.7rem;
+      &:nth-child(odd) {
+      }
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+        text-align: right;
+      }
+      span:nth-child(1) {
+      }
+      span:nth-child(2) {
+        @include round-button();
+        width: auto;
+        padding: 0.5rem 1rem;
+
+        // border: 1px solid #222;
+      }
+    }
+  }
+  .game-form{
+    width: 100%;
+    @include flex-layout(row,flex-start,center);
+    gap: 0.7rem;
+    input{
+      display: block;
+      flex:1;
+      @include round-button();
+    }
+    button{
+      @include round-button();
+      width: 10%;
+    }
+  }
+}
