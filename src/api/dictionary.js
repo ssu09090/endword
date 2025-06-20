@@ -18,8 +18,8 @@ export const dictionary = async (startChar) => {
 
   console.log(originURL);
 
-  // const proxyURL = `https://corsproxy.io/?${encodeURIComponent(originURL)}`;
-  const proxyURL = originURL;
+  const proxyURL = `https://corsproxy.io/?${encodeURIComponent(originURL)}`;
+  // const proxyURL = originURL;
   try {
     const res = await fetch(proxyURL);
     if(!res.ok){
